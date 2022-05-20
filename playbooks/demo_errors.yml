@@ -1,0 +1,12 @@
+---
+- hosts: "{{ hosts }}"
+  become: true
+  tasks:
+    - name: validar conexion a Apache
+      uri:
+        url: "http://{{ hosts }}"
+      ignore_errors: true
+      register: variable
+    - name: revisar
+      debug:
+        msg: "{{ variable.msg }}"  

@@ -1,0 +1,22 @@
+---
+- hosts: "linux04"
+  become: true
+  tasks:
+    - name: instalar paquete de Apache
+      package:
+        name: httpd
+        state: latest
+    - name: levantar servicio y hacerlo persistente al reboot 
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: crear fichero index vacio
+      file:
+        path: /var/www/html/index.html
+        state: touch
+    - name: añadir contenido a index.hmtl
+      copy:
+        content: "Hello world!! Hola mon"
+        dest: /var/www/html/index.html
+               

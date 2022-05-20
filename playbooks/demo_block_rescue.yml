@@ -1,0 +1,15 @@
+---
+- hosts: "{{ hosts }}"
+  become: true
+  tasks:
+    - name: validar conexion a Apache
+      block:
+        - uri:
+            url: "http://{{ hosts }}"
+      rescue:
+        - service:
+            name: httpd
+            state: started
+      always:
+        - debug:
+            msg: "Siempre ejecuto esto"            

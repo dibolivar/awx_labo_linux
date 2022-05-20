@@ -1,0 +1,12 @@
+---
+- hosts: "{{ hosts }}"
+  become: true
+  tasks:
+    - name: copiar fichero a server remoto
+      copy:
+        src: "/var/tmp/file1.txt"
+        dest: "/tmp/file1.txt"
+        owner: dbolivar
+        group: dbolivar
+        mode: '0644'
+        remote_src: no  # copiar al host remoto de la variable hosts
