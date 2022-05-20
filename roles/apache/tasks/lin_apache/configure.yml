@@ -1,0 +1,14 @@
+---
+#configurar httpd.conf
+- name: configurar httpd.conf
+  copy: 
+    src: httpd.conf.diana
+    dest: /etc/httpd/conf/httpd.conf
+  notify: "restart dianahttpd service"
+
+#configuramos index.html 
+- name: configurar index.html
+  copy:
+    src: index.html.diana 
+    dest: /var/www/html/index.html
+  notify: "restart dianahttpd service"

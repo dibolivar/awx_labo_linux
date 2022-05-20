@@ -1,0 +1,7 @@
+---
+#instalar httpd
+- name: instalar apache
+  package: 
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ apache_packages }}"

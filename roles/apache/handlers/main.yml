@@ -1,0 +1,7 @@
+---
+# handlers file for apache
+- name: reiniciar servicio apache
+  service:
+    name: "{{ apache_service }}"
+    state: restarted
+  listen: "restart dianahttpd service"  
